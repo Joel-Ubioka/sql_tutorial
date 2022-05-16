@@ -1,3 +1,6 @@
+<?php require "config/config.php"; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +14,45 @@
 
 <body>
     <div class="reg_form">
+        <?php
+        
+        if(isset($_POST['register']))
+        {
+            $first_name =trim( mysqli_real_escape_string($conn, $_POST['first_name']));
+            $middle_name =trim( mysqli_real_escape_string($conn, $_POST['middle_name']));
+            $last_name =trim( mysqli_real_escape_string($conn, $_POST['last_name']));
+            $email =trim( mysqli_real_escape_string($conn, $_POST['email']));
+            $phone_number =trim( mysqli_real_escape_string($conn, $_POST['phone_number']));
+            $country =trim( mysqli_real_escape_string($conn, $_POST['country']));
+            $state =trim( mysqli_real_escape_string($conn, $_POST['state']));
+            $lga =trim( mysqli_real_escape_string($conn, $_POST['lga']));
+         
+            date_default_timezone_set("Africa/Lagos");
+            $date = date('l m d , Y');
+            $time = date('h:ia');
+
+            //SELECT
+            $select = mysqli_query($conn, "SELECT * FROM students where email = '$email'");
+            if(mysqli_num_rows($select)>0)
+            {
+                echo "Already Registered!";
+            }
+            else
+            {
+                $insert = mysqli_query($conn, "INSERT INTO students (first_name,middle_name,last_name,email,phone_number,country,state,lga,date,time ) VALUES ('$first_name','$middle_name','$last_name','$email','$phone_number','$country','$state','$lga','$date','$time')");
+                if( $insert)
+                {
+                    echo "Successfully Registered!";
+                }
+
+            }
+            
+        }
+
+
+
+
+        ?>
         <h1>Students' Register</h1>
 
         <form action="#" method="POST">
