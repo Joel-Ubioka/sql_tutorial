@@ -3,6 +3,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: sans-serif, Verdana, open sans, arial;
 }
 
 
@@ -32,10 +33,49 @@
 button
 {
     border: none;
-    background-color: gold;
+    background-color: black;
     padding: 10px 20px;
     font-size: 16px;
     color: white;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.students_container
+{
+    background-color: white;
+    padding: 20px;
+    margin: 50px;
+    box-shadow: 0 0 5px silver;
+    border-radius: 10px;
+   overflow: auto;
+}
+
+.table_format
+{
+    background-color: white;
+    box-shadow: 0 0 5px silver;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.table_format th
+{
+    background-color: gold;
+    color: white;
+    text-align: left;
+    vertical-align: top;
+    padding: 5px 10px;
+}
+
+.table_format td
+{
+    text-align: left;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.table_format tr:nth-child(even)
+{
+    background-color: rgb(239 239 239);
 }
