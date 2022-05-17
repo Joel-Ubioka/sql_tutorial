@@ -18,52 +18,30 @@
         
         if(isset($_POST['show']))
         {
-           $select = mysqli_query($conn, "SELECT * FROM students WHERE NOT country='Nigeria'");
+           $select = mysqli_query($conn, "SELECT DISTINCT country FROM students");
            if(mysqli_num_rows( $select)>0)
            {
-             echo"<h1>Morrhtech Students</h1>";
+             echo"<h1>Countries</h1>";
              echo"<br>";
              echo "<table class = 'table_format'>";
              echo "<tr>";
-             echo "<th>First Name</th>";
-             echo "<th>Middle Name</th>";
-             echo "<th>Last Name</th>";
-             echo "<th>Email</th>";
-             echo "<th>Phone Number</th>";
-             echo "<th>Country</th>";
-             echo "<th>State</th>";
-             echo "<th>L.G.A</th>";
-             echo "<th>Date</th>";
-             echo "<th>Time</th>";
+             echo "<th>Countries</th>";
+             
              echo"</tr>";
              
             
             
             while($row = mysqli_fetch_array( $select))
                {
-                  $first_name =  $row['first_name'];
-                  $middle_name = $row['middle_name'];
-                  $last_name =  $row['last_name'];
-                  $email =  $row['email'];
-                  $phone_number =  $row['phone_number'];
+                 
                   $country =  $row['country'];
-                  $state =  $row['state'];
-                  $lga =  $row['lga'];
-                  $date =  $row['date'];
-                  $time=  $row['time'];
+                 
                   
 
                   echo"<tr>";
-                  echo"<td>$first_name</td>";
-                  echo"<td>$middle_name</td>";
-                  echo"<td>$last_name</td>";
-                  echo"<td>$email</td>";
-                  echo"<td>$phone_number</td>";
+                  
                   echo"<td>$country</td>";
-                  echo"<td>$state</td>";
-                  echo"<td>$lga</td>";
-                  echo"<td>$date</td>";
-                  echo"<td>$time</td>";
+                 
                   echo"</tr>";
                }
 
@@ -96,7 +74,7 @@
                 <input type="text" class="input_control" name="lga" placeholder="Enter your LGA" required>
               -->
             <br>
-            <button name="show">Show Students</button>
+            <button name="show">Show Countries</button>
         </form>
     </div>
 </body>
