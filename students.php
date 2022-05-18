@@ -18,13 +18,14 @@
         
         if(isset($_POST['show']))
         {
-           $select = mysqli_query($conn, "SELECT * FROM students WHERE NOT country='Nigeria'");
+           $select = mysqli_query($conn, "SELECT * FROM students  WHERE lga IS NOT NULL AND lga !='' ");
            if(mysqli_num_rows( $select)>0)
            {
              echo"<h1>Morrhtech Students</h1>";
              echo"<br>";
              echo "<table class = 'table_format'>";
              echo "<tr>";
+             echo "<th>ID</th>";
              echo "<th>First Name</th>";
              echo "<th>Middle Name</th>";
              echo "<th>Last Name</th>";
@@ -41,6 +42,7 @@
             
             while($row = mysqli_fetch_array( $select))
                {
+                 $id =  $row['id'];
                   $first_name =  $row['first_name'];
                   $middle_name = $row['middle_name'];
                   $last_name =  $row['last_name'];
@@ -54,6 +56,7 @@
                   
 
                   echo"<tr>";
+                  echo"<td>$id</td>";
                   echo"<td>$first_name</td>";
                   echo"<td>$middle_name</td>";
                   echo"<td>$last_name</td>";

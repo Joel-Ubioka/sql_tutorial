@@ -33,6 +33,7 @@
 
             //SELECT
             $select = mysqli_query($conn, "SELECT * FROM students where email = '$email'");
+            
             if(mysqli_num_rows($select)>0)
             {
                 echo "Already Registered!";
@@ -40,6 +41,7 @@
             else
             {
                 $insert = mysqli_query($conn, "INSERT INTO students (first_name,middle_name,last_name,email,phone_number,country,state,lga,date,time ) VALUES ('$first_name','$middle_name','$last_name','$email','$phone_number','$country','$state','$lga','$date','$time')");
+                //$insert = mysqli_query($conn, "INSERT INTO students (first_name,middle_name,last_name,email,phone_number,country,state,date,time ) VALUES ('$first_name','$middle_name','$last_name','$email','$phone_number','$country','$state','$date','$time')");
                 if( $insert)
                 {
                     echo "Successfully Registered!";
@@ -64,7 +66,7 @@
             <input type="tel" class="input_control" name="phone_number" placeholder="Enter your phone number" required>
             <input type="text" class="input_control" name="country" placeholder="Enter your country" required>
             <input type="text" class="input_control" name="state" placeholder="Enter your state" required>
-            <input type="text" class="input_control" name="lga" placeholder="Enter your LGA" required>
+            <input type="text" class="input_control" name="lga" placeholder="Enter your LGA">
             <button name="register">Register</button>
         </form>
     </div>
