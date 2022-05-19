@@ -18,7 +18,7 @@
         
         if(isset($_POST['show']))
         {
-           $select = mysqli_query($conn, "SELECT * FROM students  WHERE lga IS NOT NULL AND lga !='' ");
+           $select = mysqli_query($conn, "SELECT * FROM students LIMIT 6");
            if(mysqli_num_rows( $select)>0)
            {
              echo"<h1>Morrhtech Students</h1>";
