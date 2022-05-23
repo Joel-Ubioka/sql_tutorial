@@ -18,58 +18,44 @@
         
         if(isset($_POST['show']))
         {
-           $select = mysqli_query($conn, "SELECT * FROM students UNION ALL SELECT * FROM students2");
+           $select = mysqli_query($conn, "SELECT first_name, amount, 
+                                          CASE 
+                                          WHEN amount > 1000 THEN 'Higher Payment'
+                                          WHEN amount > 500 THEN 'Medium Payment'
+                                          ELSE 'Lower Payment'
+                                          END AS amount_desc FROM students
+           
+
+
+           
+           ");
            if(mysqli_num_rows( $select)>0)
            {
-             echo"<h1>Morrhtech Students</h1>";
+           
              echo"<br>";
              echo "<table class = 'table_format'>";
              echo "<tr>";
-             echo "<th>ID</th>";
              echo "<th>First Name</th>";
-             echo "<th>Middle Name</th>";
-             echo "<th>Last Name</th>";
-             echo "<th>Email</th>";
-             echo "<th>Phone Number</th>";
-             echo "<th>Country</th>";
-             echo "<th>State</th>";
-             echo "<th>L.G.A</th>";
              echo "<th>Amount</th>";
-             echo "<th>Date</th>";
-             echo "<th>Time</th>";
+             echo "<th>Description</th>";
              echo"</tr>";
              
             
             
             while($row = mysqli_fetch_array( $select))
                {
-                 $id =  $row['id'];
-                  $first_name =  $row['first_name'];
-                  $middle_name = $row['middle_name'];
-                  $last_name =  $row['last_name'];
-                  $email =  $row['email'];
-                  $phone_number =  $row['phone_number'];
-                  $country =  $row['country'];
-                  $state =  $row['state'];
-                  $lga =  $row['lga'];
-                  $amount =  $row['amount'];
-                  $date =  $row['date'];
-                  $time=  $row['time'];
+                
+                  $first_name = $row['first_name'];
+                  $amount = $row['amount'];
+                  $amount_desc = $row['amount_desc'];
+                  
+                
                   
 
                   echo"<tr>";
-                  echo"<td>$id</td>";
-                  echo"<td>$first_name</td>";
-                  echo"<td>$middle_name</td>";
-                  echo"<td>$last_name</td>";
-                  echo"<td>$email</td>";
-                  echo"<td>$phone_number</td>";
-                  echo"<td>$country</td>";
-                  echo"<td>$state</td>";
-                  echo"<td>$lga</td>";
-                  echo"<td>$amount</td>";
-                  echo"<td>$date</td>";
-                  echo"<td>$time</td>";
+                  echo"<td>$first_name </td>";
+                  echo"<td> $amount </td>";
+                  echo"<td> $amount_desc </td>";
                   echo"</tr>";
                }
 
