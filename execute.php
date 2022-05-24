@@ -18,7 +18,7 @@
         
         if(isset($_POST['show']))
         {
-           $execute = mysqli_query($conn, "CREATE TABLE students_copy AS SELECT * FROM students ");
+           $execute = mysqli_query($conn, "ALTER TABLE student_fees MODIFY COLUMN total int");
            if($execute)
            {
            
