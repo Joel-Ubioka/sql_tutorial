@@ -18,14 +18,7 @@
         
         if(isset($_POST['show']))
         {
-           $execute = mysqli_query($conn, "CREATE TABLE backend_students(
-                                    id int NOT NULL,
-                                    full_name varchar(200) NOT NULL,
-                                    student_id int NOT NULL,
-                                    PRIMARY KEY (id),
-                                    CONSTRAINT FK_backend FOREIGN KEY (student_id) REFERENCES students(id)
-                                
-                                )");
+           $execute = mysqli_query($conn, "ALTER TABLE candidates3 AUTO_INCREMENT=50");
            if($execute)
            {
            
@@ -62,6 +55,8 @@
         </form>
     </div>
 </body>
+
+</html>
 
 </html>
 
